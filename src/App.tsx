@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
-import Hello from './Hello'
-import './App.css';
+import Hello from './Hello';
+import './styles/index.scss';
+import './App.scss';
 
 function App() {
   return (
