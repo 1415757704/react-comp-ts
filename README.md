@@ -1,46 +1,35 @@
-# Getting Started with Create React App
+### 组件库开发 --react typescript
+#### Button
++ 利用classnames整个class
+```
+const classes = classNames('btn', className, {
+    [`btn-${btnType}`]: btnType,
+    [`btn-${size}`]: size,
+    'disabled': btnType === 'link' && disabled
+})
+```
++ Partial将所有的属性都变成可选
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```
+// 按钮默认属性
+type NativeButtonProps = IBaseButtonProps & ButtonHTMLAttributes<HTMLElement>;
+// a标签默认属性
+type AnchorButtonProps = IBaseButtonProps & AnchorHTMLAttributes<HTMLElement>;
+export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
+```
++ 函数组件的声明方式
+```
+const Button: React.FC<ButtonProps> = (props) => {}
+```
++ 声明属性默认值
+```
+Button.defaultProps = {
+  disabled: false,
+  btnType: 'default'
+}
+```
++ scss对于文件的分割，将文件使用_开头进行命名，在打包编译的时候，不会将文件进行单独打包，所有这些文件都导入到单个主SCSS文件，即是不以_开头的scss文件
++ jest单元测试 + testing-library
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Menu
++ 对于组件，使用类似插槽的方式而不是使用json的方式来控制children的显示

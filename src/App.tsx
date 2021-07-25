@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import Hello from './Hello';
 import './styles/index.scss';
 import './App.scss';
+import Button from './components/Button';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         >
           Learn React
         </a>
+        <Button btnType="danger">Nice</Button>
         <Hello message="e1231" />
       </header>
     </div>
