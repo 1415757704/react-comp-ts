@@ -4,6 +4,9 @@ import Hello from './Hello';
 import './styles/index.scss';
 import './App.scss';
 import Button from './components/Button';
+import Menu, {MenuMode} from './components/Menu/menu';
+import MenuItem from './components/Menu/menu-item';
+import SubMenu from './components/Menu/sub-menu'
 
 function App() {
   return (
@@ -21,6 +24,30 @@ function App() {
         >
           Learn React
         </a>
+        <Menu defaultIndex="0" mode={MenuMode.HORIZONTAL}>
+          <MenuItem>
+            active
+          </MenuItem>
+          <MenuItem disabled>
+            disabled
+          </MenuItem>
+          <MenuItem>
+            xyz
+          </MenuItem>
+          <SubMenu title="dropdown">
+            <MenuItem>
+              drop1
+            </MenuItem>
+            <MenuItem>
+              drop2
+            </MenuItem>
+          </SubMenu>
+          <SubMenu title="opened">
+            <MenuItem>
+              opened1
+            </MenuItem>
+          </SubMenu>
+        </Menu>
         <Button btnType="danger">Nice</Button>
         <Hello message="e1231" />
       </header>
